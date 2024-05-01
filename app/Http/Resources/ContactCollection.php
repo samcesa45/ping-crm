@@ -14,6 +14,6 @@ class ContactCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return $this->collection->map->only('id','name','phone','city','deleted_at','organization');
     }
 }
