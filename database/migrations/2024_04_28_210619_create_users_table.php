@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('account_id')->constrained('accounts');
             $table->string('first_name',25);
             $table->string('last_name',25);
             $table->string('email', 50)->unique();

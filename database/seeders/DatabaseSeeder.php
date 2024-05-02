@@ -17,19 +17,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $user = User::factory()->create([
-            'id' => Str::uuid(),
-            'first_name' => 'Jane',
-            'last_name' => 'Doe',
-            'email' => 'janedoe@example.com',
-            'owner' => true
-        ]);
-
+        
         $account = Account::create([
           'id' => Str::uuid(),
           'name' => 'Acme Corporation', 
-          'user_id' => $user->id]);
+        ]);
+
+        $user = User::factory()->create([
+            'id' => Str::uuid(),
+            'account_id' => $account->id,
+            'first_name' => 'Jane',
+            'last_name' => 'Doe',
+            'email' => 'janedoe@gmail.com',
+            'password' => 'password',
+            'owner' => true
+        ]);
+
+         User::factory(5)->create(['account_id' => $account->id]);
         
          $organizationId = Str::uuid();
          
