@@ -15,8 +15,6 @@ class UsersController extends Controller
     {
         $user = Auth::user();
 
-       
-
         return Inertia::render('Users/Index', [
             'filters' => Request::all('search','role','trashed'),
             'users' => new UserCollection(

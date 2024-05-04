@@ -12,7 +12,7 @@ class UserCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         return $this->collection->map->only('id','name','email','owner','photo','deleted_at');
     }

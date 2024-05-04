@@ -6,7 +6,29 @@ export interface User {
     email_verified_at: string;
 }
 
-export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+export interface SelectProps {
+    label: string;
+    name: string;
+    className: string;
+    children: React.ReactNode;
+    errors: Array<any>;
+}
+export interface IconProps {
+    name: string;
+    className: string;
+}
+
+export interface SeoProps {
+    title:string;
+    description:string;
+    name:string;
+    type:string
+}
+
+
+export type PageProps<
+    T extends Record<string, unknown> = Record<string, unknown>
+> = T & {
     auth: {
         user: User;
     };
