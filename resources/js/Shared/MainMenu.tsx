@@ -10,7 +10,7 @@ export default function MainMenu({ className }: { className: string }) {
                 icon="office"
             />
             <MainMenuItem text="Contacts" link="contacts" icon="users" />
-            <MainMenuItem text="Reports" link="reports" icon="printer" />
+            {/* <MainMenuItem text="Reports" link="reports" icon="printer" /> */}
         </div>
     );
 }

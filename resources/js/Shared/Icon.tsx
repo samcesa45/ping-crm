@@ -31,7 +31,7 @@ export default function Icon({ name, className }: IconProps) {
         );
     }
 
-    if (name === "cheveron-down") {
+    if (name === "chevron-down") {
         return (
             <svg
                 className={className}
@@ -43,7 +43,7 @@ export default function Icon({ name, className }: IconProps) {
         );
     }
 
-    if (name === "cheveron-right") {
+    if (name === "chevron-right") {
         return (
             <svg
                 className={className}

@@ -1,10 +1,20 @@
 import Icon from "@/Shared/Icon";
+import Layout from "@/Shared/Layout";
+import Pagination from "@/Shared/Pagination";
 import SearchFilter from "@/Shared/SearchFilter";
 import { Link, usePage } from "@inertiajs/react";
-import React from "react";
 
+interface UserProps {
+    id: string;
+    name: string;
+    photo: string;
+    email: string;
+    owner: string;
+    deleted_at: null | string;
+    [key: string]: any;
+}
 export default function Index() {
-    const { users } = usePage().props;
+    const { users } = usePage<UserProps>().props;
     const {
         data,
         meta: { links },
@@ -16,7 +26,7 @@ export default function Index() {
                 <SearchFilter />
                 <Link
                     className="btn-indigo focus:outline-none"
-                    href="{route('users.create')}"
+                    href={route("users.create")}
                 >
                     <span>Create</span>
                     <span className="hidden md:inline">User</span>
@@ -35,7 +45,14 @@ export default function Index() {
                     </thead>
                     <tbody>
                         {data.map(
-                            ({ id, name, photo, email, owner, deleted_at }) => {
+                            ({
+                                id,
+                                name,
+                                photo,
+                                email,
+                                owner,
+                                deleted_at,
+                            }: UserProps) => {
                                 return (
                                     <tr
                                         key={id}
@@ -43,7 +60,7 @@ export default function Index() {
                                     >
                                         <td className="border-t">
                                             <Link
-                                                href="{route('users.edit',id)}"
+                                                href={route("users.edit", id)}
                                                 className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
                                             >
                                                 {photo && (
@@ -64,7 +81,7 @@ export default function Index() {
                                         <td className="border-t">
                                             <Link
                                                 tabIndex={-1}
-                                                href="{route('users.edit',id)}"
+                                                href={route("users.edit", id)}
                                                 className="flex items-center px-6 py-4 focus-within:text-indigo focus:outline-none"
                                             >
                                                 {email}
@@ -73,16 +90,16 @@ export default function Index() {
                                         <td className="border-t">
                                             <Link
                                                 tabIndex={-1}
-                                                href="{route('users.edit',id)}"
+                                                href={route("users.edit", id)}
                                                 className="flex items-center px-6 py-4 focus-within:text-indigo focus:outline-none"
                                             >
                                                 {owner ? "Owner" : "User"}
                                             </Link>
                                         </td>
-                                        <td className="border-t">
+                                        <td className="w-px border-t">
                                             <Link
                                                 tabIndex={-1}
-                                                href="{route('users.edit',id)}"
+                                                href={route("users.edit", id)}
                                                 className="flex items-center px-6 py-4 focus-within:text-indigo focus:outline-none"
                                             >
                                                 <Icon
@@ -105,8 +122,9 @@ export default function Index() {
                     </tbody>
                 </table>
             </div>
+            <Pagination links={links} />
         </div>
     );
 }
 
-Index.layout = (page) => <Layout title="Users" children={page} />;
+Index.layout = (page: any) => <Layout title="Users" children={page} />;

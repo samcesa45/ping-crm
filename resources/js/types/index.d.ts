@@ -19,12 +19,22 @@ export interface IconProps {
 }
 
 export interface SeoProps {
-    title:string;
-    description:string;
-    name:string;
-    type:string
+    title: string;
+    description: string;
+    name: string;
+    type: string;
 }
 
+export interface FlashMessageProps {
+    flash: { success: string; error: string };
+    errors: any[];
+    [key: string]: any;
+}
+
+export interface FilterProps {
+    filters: { role: string; search: string; trashed: string };
+    [key: string]: any;
+}
 
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>

@@ -32,17 +32,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth','verified'])->group(function () {
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-    Route::get('/users',[UsersController::class,'index'])->name('users.index');
-    Route::post('/users',[UsersController::class,'index'])->name('users.store');
-    Route::get('/users/create',[UsersController::class,'create'])->name('users.create');
-    Route::get('/users/{user}/edit',[UsersController::class,'edit'])->name('users.edit');
-    // Route::get('users/create')->name('users.create')->uses('UsersController@create');
-    // Route::post('users')->name('users.store')->uses('UsersController@store');
-    // Route::get('users/{user}/edit')->name('users.edit')->uses('UsersController@edit');
-    // Route::put('users/{user}')->name('users.update')->uses('UsersController@update');
-    // Route::delete('users/{user}')->name('users.destroy')->uses('UsersController@destroy');
-    // Route::put('users/{user}/restore')->name('users.restore')->uses('UsersController@restore');
+    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('users',[UsersController::class,'index'])->name('users');
+    Route::post('users',[UsersController::class,'index'])->name('users.store');
+    Route::get('users/create',[UsersController::class,'create'])->name('users.create');
+    Route::get('users/{user}/edit',[UsersController::class,'edit'])->name('users.edit');
+
+    Route::get('organizations',[OrganizationController::class,'index'])->name('organizations');
+    Route::post('organizations',[OrganizationController::class,'index'])->name('organizations.store');
+    Route::get('organizations/create',[OrganizationController::class,'create'])->name('organizations.create');
+    Route::get('organizations/{organization}/edit',[OrganizationController::class,'edit'])->name('organizations.edit');
+
+    Route::get('contacts',[ContactController::class,'index'])->name('contacts');
+    Route::post('contacts',[ContactController::class,'index'])->name('contacts.store');
+    Route::get('contacts/create',[ContactController::class,'create'])->name('contacts.create');
+    Route::get('contacts/{contact}/edit',[ContactController::class,'edit'])->name('contacts.edit');
+   
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

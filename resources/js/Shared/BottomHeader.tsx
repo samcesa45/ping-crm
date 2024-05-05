@@ -1,6 +1,7 @@
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
 import Icon from "./Icon";
+import { PageProps } from "@/types";
 
 export default function BottomHeader() {
     const { auth } = usePage().props;
