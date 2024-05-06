@@ -34,7 +34,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth','verified'])->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('users',[UsersController::class,'index'])->name('users');
-    Route::post('users',[UsersController::class,'index'])->name('users.store');
+    Route::post('users',[UsersController::class,'store'])->name('users.store');
     Route::get('users/create',[UsersController::class,'create'])->name('users.create');
     Route::get('users/{user}/edit',[UsersController::class,'edit'])->name('users.edit');
 

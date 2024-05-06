@@ -21,7 +21,8 @@ class UsersCreatedRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    {  
+     
         return [
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],

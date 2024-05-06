@@ -8,6 +8,7 @@ use App\Models\User;
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class UsersController extends Controller
@@ -36,13 +37,14 @@ class UsersController extends Controller
 
     public function store(UsersCreatedRequest $request)
     {
+    
         $user =  auth()->user();
         $input = $request->validated();
-
         $user->account->users()->create($input);
 
-        return route_to('users')
+        return to_route('users')
              ->with('success', 'Users Created Successfully');
+            
     }
 
     public function edit(User $user)
